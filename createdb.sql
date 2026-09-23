@@ -25,8 +25,8 @@ CREATE TABLE people(
 CREATE TABLE professors(
     professor_id INT,
     category VARCHAR(30) NOT NULL,
-    PRIMARY KEY(professor_id)
-    FOREIGN KEY(professor_id) REFERENCES (person_id)
+    PRIMARY KEY(professor_id),
+    FOREIGN KEY(professor_id) REFERENCES people(person_id)
 
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE students(
     student_id INT,
     access_method VARCHAR(20) NOT NULL,
     PRIMARY KEY(student_id),
-    FOREIGN KEY(student_id) REFERENCES(person_id)
+    FOREIGN KEY(student_id) REFERENCES people(person_id)
 );
 CREATE TABLE degrees(
     degree_id INT AUTO_INCREMENT,
@@ -50,7 +50,7 @@ CREATE TABLE subjects(
     credits TINYINT NOT NULL,
     course  TINYINT NOT NULL,
     subject_type VARCHAR(30) NOT NULL,
-    PRIMARY KEY(subject_id)
+    PRIMARY KEY(subject_id),
     FOREIGN KEY(degree_id) REFERENCES degrees(degree_id)
 
 );
