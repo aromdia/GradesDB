@@ -202,6 +202,8 @@ VALUES ('Grado en Pruebas', 2);
 INSERT INTO subjects (degree_id, subject_name, acronym, credits, course, subject_type)
 VALUES (1, 'Asignatura Test', 'TST', 8, 1, 'Obligatoria');
 
+INSERT INTO groups (subject_id, group_name, activity, academic_year)
+VALUES (1, 'T1', 'Teoría', 1999);
 
 
 
