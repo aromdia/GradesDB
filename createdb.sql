@@ -107,6 +107,10 @@ ALTER TABLE people
 ALTER TABLE professors
     ADD CONSTRAINT rn20_professors_category CHECK(category in ('Ayudante', 'AyudanteDoctor', 'Titular', 'Catedrático'))
 
+ALTER TABLE students
+    ADD CONSTRAINT rn19_students_access_method CHECK (
+        access_method IN ('Selectividad','Ciclo','Mayor','Titulado','Extranjero')
+    );
 
 
 
