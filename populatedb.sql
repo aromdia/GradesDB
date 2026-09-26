@@ -196,6 +196,8 @@ VALUES (2000, '22222222B', 'María', 'Estudiante', 20, 'maria@us.es');
 INSERT INTO students (student_id, access_method)
 VALUES (2000, 'Erasmus');
 
+INSERT INTO degrees (degree_name, duration_years)
+VALUES ('Grado en Pruebas', 2);
 
 
 

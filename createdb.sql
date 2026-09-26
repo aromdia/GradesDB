@@ -105,12 +105,15 @@ ALTER TABLE people
     ADD CONSTRAINT rn_uq_people_email UNIQUE (email);
 
 ALTER TABLE professors
-    ADD CONSTRAINT rn20_professors_category CHECK(category in ('Ayudante', 'AyudanteDoctor', 'Titular', 'Catedrático'))
+    ADD CONSTRAINT rn20_professors_category CHECK(category in ('Ayudante', 'AyudanteDoctor', 'Titular', 'Catedrático'));
 
 ALTER TABLE students
     ADD CONSTRAINT rn19_students_access_method CHECK (
         access_method IN ('Selectividad','Ciclo','Mayor','Titulado','Extranjero')
     );
+ALTER TABLE degrees
+    ADD CONSTRAINT rn13_degree_duration CHECK (duration_years BETWEEN 3 AND 6),
+    ADD CONSTRAINT rn_uq_degrees_name UNIQUE (degree_name);
 
 
 
