@@ -104,6 +104,8 @@ ALTER TABLE people
     ADD CONSTRAINT rn_uq_people_dni UNIQUE (dni),
     ADD CONSTRAINT rn_uq_people_email UNIQUE (email);
 
+ALTER TABLE professors
+    ADD CONSTRAINT rn20_professors_category CHECK(category in ('Ayudante', 'AyudanteDoctor', 'Titular', 'Catedrático'))
 
 
 
