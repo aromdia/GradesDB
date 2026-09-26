@@ -199,6 +199,9 @@ VALUES (2000, 'Erasmus');
 INSERT INTO degrees (degree_name, duration_years)
 VALUES ('Grado en Pruebas', 2);
 
+INSERT INTO subjects (degree_id, subject_name, acronym, credits, course, subject_type)
+VALUES (1, 'Asignatura Test', 'TST', 8, 1, 'Obligatoria');
+
 
 
 
