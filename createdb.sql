@@ -130,5 +130,8 @@ ALTER TABLE groups
     ),
     ADD CONSTRAINT rn_uq_groups_name UNIQUE (subject_id, group_name, academic_year);
 
+ALTER TABLE teaching_loads
+    ADD CONSTRAINT rn21_teaching_loads_credits CHECK (credits > 0);
+
 
 
