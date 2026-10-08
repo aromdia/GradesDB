@@ -30,3 +30,6 @@ VALUES ('Grado en Pruebas', 2);
 -- Prueba de instertar asignatura con creditos invalidos
 INSERT INTO subjects (degree_id, subject_name, acronym, credits, course, subject_type)
 VALUES (1, 'Asignatura Test', 'TST', 8, 1, 'Obligatoria');
+#Año academico fuera de rango 
+INSERT INTO groups (subject_id, group_name, activity, academic_year)
+VALUES (1, 'T1', 'Teoría', 1999);
