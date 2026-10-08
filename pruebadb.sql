@@ -24,3 +24,6 @@ VALUES (2000, '22222222B', 'María', 'Estudiante', 20, 'maria@us.es');
 -- Intentamos crear estudiante con método inválido
 INSERT INTO students (student_id, access_method)
 VALUES (2000, 'Erasmus');
+-- Se intenta añadir un grado que dura 2 años
+INSERT INTO degrees (degree_name, duration_years)
+VALUES ('Grado en Pruebas', 2);
