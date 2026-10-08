@@ -107,7 +107,8 @@ CREATE TABLE teaching_loads (
     credits DECIMAL(4,1) NOT NULL,
     PRIMARY KEY (professor_id, group_id),
     FOREIGN KEY (professor_id) REFERENCES professors(professor_id),
-    FOREIGN KEY (group_id) REFERENCES groups(group_id)
+    FOREIGN KEY (group_id) REFERENCES groups(group_id),
+    CONSTRAINT ck_teaching_loads_credits CHECK( credits > 0)
 );
 ALTER TABLE people
 	ADD CONSTRAINT rn12_people_age CHECK(age BETWEEN 16 AND 70),

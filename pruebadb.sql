@@ -33,3 +33,6 @@ VALUES (1, 'Asignatura Test', 'TST', 8, 1, 'Obligatoria');
 #Año academico fuera de rango 
 INSERT INTO groups (subject_id, group_name, activity, academic_year)
 VALUES (1, 'T1', 'Teoría', 1999);
+#Se inserta un teaching_load con creditos incorrectos
+INSERT INTO teaching_loads (professor_id, group_id, credits)
+VALUES (1, 1, 0);
