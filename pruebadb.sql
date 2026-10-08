@@ -27,3 +27,6 @@ VALUES (2000, 'Erasmus');
 -- Se intenta añadir un grado que dura 2 años
 INSERT INTO degrees (degree_name, duration_years)
 VALUES ('Grado en Pruebas', 2);
+-- Prueba de instertar asignatura con creditos invalidos
+INSERT INTO subjects (degree_id, subject_name, acronym, credits, course, subject_type)
+VALUES (1, 'Asignatura Test', 'TST', 8, 1, 'Obligatoria');
