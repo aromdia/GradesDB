@@ -39,3 +39,27 @@ VALUES (1, 1, 0);
 #Se inserta una nota con matricula de honor incorrecta
 INSERT INTO grades (student_id, group_id, grade_value, exam_call, with_honors)
 VALUES (1, 1, 8.5, 'Primera', 1);
+#Cambiar email de una persona
+UPDATE people
+SET email= 'nuevo.email@us.es'
+WHERE person_id=1;
+#Incrementar la duración de todos los grados en 1 año
+UPDATE degrees
+SET duration_years = duration_years + 1;
+#Cambiar la categoría de varios profesores
+UPDATE professors
+SET category = 'Titular'
+WHERE category = 'AyudanteDoctor';
+#Borrar una persona específica
+DELETE FROM people
+WHERE person_id = 100;
+#Borrar todos los grupos de teoría
+DELETE FROM groups
+WHERE activity = 'Teoría';
+#Borrar notas de suspenso
+DELETE FROM grades
+WHERE grade_value < 5;
+#Fallo por RESTRICT
+DELETE FROM degrees WHERE degree_id = 1;
+
+
