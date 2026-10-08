@@ -36,3 +36,6 @@ VALUES (1, 'T1', 'Teoría', 1999);
 #Se inserta un teaching_load con creditos incorrectos
 INSERT INTO teaching_loads (professor_id, group_id, credits)
 VALUES (1, 1, 0);
+#Se inserta una nota con matricula de honor incorrecta
+INSERT INTO grades (student_id, group_id, grade_value, exam_call, with_honors)
+VALUES (1, 1, 8.5, 'Primera', 1);
