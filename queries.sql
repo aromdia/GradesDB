@@ -109,3 +109,21 @@ WHERE s.credits IN (6,12);
 SELECT p.first_name, p.last_name, p.age
 FROM people p
 WHERE p.age BETWEEN 20 AND 30;
+
+#DISTINCT
+
+#17 NOMBRES UNICOS DE GRUPOS
+
+SELECT DISTINCT g.group_name
+FROM groups g;
+
+#18 TIPOS DE ASIGNATURA
+
+SELECT DISTINCT s.subject_type
+FROM subjects s;
+
+#19 AÑOS ACADÉMICOS 
+
+SELECT DISTINCT g.academic_year
+FROM groups g
+ORDER BY g.academic_year DESC;
