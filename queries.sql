@@ -281,3 +281,42 @@ SELECT g.group_name, g.activity, g.academic_year
 FROM groups g
 ORDER BY g.academic_year DESC, g.group_name ASC;
 
+#JOIN: Consultas avanzadas con múltiples tablas
+
+#37 JOIN con tabla intermedia
+SELECT st.first_name, st.last_name, gr.group_name, gr.activity, gr.academic_year
+FROM v_students st
+JOIN group_enrollments ge ON st.student_id = ge.student_id
+JOIN groups gr ON gr.group_id = ge.group_id;
+
+#38 JOIN uno a muchos
+SELECT d.degree_name, s.subject_name, s.acronym, s.credits, s.course, s.subject_type
+FROM degrees d
+JOIN subjects s ON d.degree_id = s.degree_id
+ORDER BY d.degree_name, s.course;
+
+#39 JOIN múltiple
+SELECT st.first_name, st.last_name, s.subject_name, s.acronym, g.grade_value, g.exam_call, gr.academic_year
+FROM grades g
+JOIN v_students st ON g.student_id = st.student_id
+JOIN groups gr ON g.group_id = gr.group_id
+JOIN subjects s ON gr.subject_id = s.subject_id;
+#40 JOIN CON AGREGACION
+SELECT pr.first_name, pr.last_name, pr.category, s.subject_name, gr.group_name, gr.activity, tl.credits AS teaching_credits
+FROM v_professors pr
+JOIN teaching_loads tl ON pr.professor_id = tl.professor_id
+JOIN groups gr ON tl.group_id = gr.group_id
+JOIN subjects s ON gr.subject_id = s.subject_id;
+
+#41 DISTINCT CON JOIN 
+SELECT DISTINCT st.first_name, st.last_name, s.subject_name, s.acronym, gr.academic_year
+FROM v_students st
+JOIN students_groups ge ON st.student_id = ge.student_id
+JOIN groups gr ON ge.group_id = gr.group_id
+JOIN subjects s ON gr.subject_id = s.subject_id
+ORDER BY st.last_name, s.subject_name;
+
+#42 left join
+SELECT st.first_name, st.last_name, g.grade_value, g.exam_call
+FROM v_students st
+LEFT JOIN grades g ON st.student_id = g.student_id;
