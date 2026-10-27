@@ -127,3 +127,28 @@ FROM subjects s;
 SELECT DISTINCT g.academic_year
 FROM groups g
 ORDER BY g.academic_year DESC;
+
+#SUBCONSULTAS
+
+#20 AGREGADO FILTRADO 
+
+SELECT MAX(g.grade_value) AS max_grade
+FROM grades g
+WHERE g.student_id= 6;
+
+#21 IN con subconsulta
+
+SELECT ge.student_id
+FROM group_enrollments ge
+WHERE ge.group_id IN (
+	SELECT g.group_id
+	FROM groups g
+	WHERE g.academic_year = 2024
+);
+
+#22 COMPARACION CON AGREGADO 
+SELECT s.subject_name, s.credits
+FROM subjects s
+WHERE s.credits > (SELECT AVG(credits) FROM subjects);
+
+#
