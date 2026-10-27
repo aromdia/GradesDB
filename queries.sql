@@ -49,3 +49,40 @@ SELECT *
 FROM students st
 JOIN people p ON st.student_id = p.person_id;
 
+#FUNCIONES AGREGADAS 
+
+#7, Media de notas
+
+SELECT AVG(g.grade_value) AS average_grade
+FROM grades g
+WHERE g.group_id = 1;
+
+#8, Suma créditos
+
+SELECT SUM(s.credits) AS total_credits
+FROM subjects s
+WHERE s.degree_id = 3;
+
+#9, Contar registros
+
+SELECT COUNT(*) AS total_students
+FROM students;
+
+#10, Contar con agrupación básica
+
+SELECT activity, COUNT(*) AS total_groups
+FROM groups
+GROUP BY activity;
+
+#11 VALOR MÁXIMO
+
+SELECT MAX(g.grade_value) AS max_grade
+FROM grades g;
+
+#12 VALOR MINIMO 
+
+SELECT MIN(g.grade_value) AS min_grade
+FROM grades g;
+
+
+
