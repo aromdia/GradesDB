@@ -151,4 +151,19 @@ SELECT s.subject_name, s.credits
 FROM subjects s
 WHERE s.credits > (SELECT AVG(credits) FROM subjects);
 
-#
+#PATRONES CON LIKE 
+
+#23 TERMINACION DE CADENA
+SELECT p.first_name, p.last_name, p.dni
+FROM people p
+WHERE p.dni LIKE '%A';
+
+#24 INICIO DE CADENA
+SELECT s.subject_name
+FROM subjects s
+WHERE s.subject_name LIKE 'Fundamentos%';
+
+#25 LONGITUD EXACTA 
+SELECT p.first_name, p.last_name
+FROM people p
+WHERE p.first_name LIKE '_____';
