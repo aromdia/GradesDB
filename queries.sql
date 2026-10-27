@@ -84,5 +84,28 @@ FROM grades g;
 SELECT MIN(g.grade_value) AS min_grade
 FROM grades g;
 
+#CONDICIONES MULTIPLES
 
+#13 OR LOGICO
 
+SELECT g.grade_id, g.grade_value, g.exam_call
+FROM grades g
+WHERE g.grade_value<5 OR g.grade_value>9;
+
+#14 BETWEEN
+
+SELECT g.grade_id, g.grade_value, g.exam_call
+FROM grades g
+WHERE g.grade_value BETWEEN 5 AND 7;
+
+#15 IN
+
+SELECT s.subject_id, s.subject_name, s.credits 
+FROM subjects s
+WHERE s.credits IN (6,12);
+
+#16 RANGO DE EDAD
+
+SELECT p.first_name, p.last_name, p.age
+FROM people p
+WHERE p.age BETWEEN 20 AND 30;
