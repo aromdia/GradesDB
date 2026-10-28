@@ -320,3 +320,53 @@ ORDER BY st.last_name, s.subject_name;
 SELECT st.first_name, st.last_name, g.grade_value, g.exam_call
 FROM v_students st
 LEFT JOIN grades g ON st.student_id = g.student_id;
+
+#GROUP BY: Agrupación y agregación
+
+#43 Agregación por grupo
+SELECT st.first_name, st.last_name, AVG(g.grade_value) AS average_grade, COUNT(*) AS total_grades
+FROM v_students st
+JOIN grades g ON st.student_id = g.student_id
+GROUP BY st.student_id, st.first_name, st.last_name;
+
+#44 Conteo por categoría
+SELECT st.access_method, COUNT(*) AS total_students
+FROM v_students st
+GROUP BY st.access_method;
+
+#45 Agregación con JOIN
+SELECT d.degree_name, COUNT(*) AS total_degrees
+FROM degrees d
+JOIN subjects s ON d.degree_id = s.degree_id
+GROUP BY d.degree_id, d.degree_name;
+
+#46 Conteo por entidad
+SELECT s.subject_name,s.acronym, COUNT(*) AS total_groups
+FROM subjects s
+JOIN groups gr ON s.subject_id = gr.subject_id
+GROUP BY s.subject_id, s.subject_name, s.acronym;
+
+#47 Promedio por categoría
+SELECT g.exam_call, AVG(g.grade_value) AS average_grade, COUNT(*) AS total_grades
+FROM grades g
+GROUP BY g.exam_call;
+
+#48 Agrupación múltiple
+SELECT s.subject_name, s.acronym, g.exam_call, AVG(g.grade_value) AS average_grade, COUNT(*) AS total_grades
+FROM grades g
+JOIN groups gr ON g.group_id= gr.group_id
+JOIN subjects s ON gr.subject_id = s.subject_id
+GROUP BY s.subject_id ,s.subject_name, g.exam_call
+ORDER BY s.subject_name, g.exam_call;
+
+#49 COUNT DISTINCT
+SELECT st.academic_year, COUNT(DISTINCT st.person_id) AS total_students
+FROM v_student_grades st
+GROUP BY st.academic_year
+ORDER BY st.academic_year DESC;
+
+#50 SUMA POR GRUPO 
+SELECT pl.first_name, pl.last_name,pl.category, SUM(pl.teaching_credits) AS total_credits
+FROM v_professor_loads pl
+GROUP BY pl.person_id,pl.first_name,pl.last_name,pl.category;
+
