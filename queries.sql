@@ -370,3 +370,34 @@ SELECT pl.first_name, pl.last_name,pl.category, SUM(pl.teaching_credits) AS tota
 FROM v_professor_loads pl
 GROUP BY pl.person_id,pl.first_name,pl.last_name,pl.category;
 
+#HAVING: Filtrado de grupos
+
+#51  Filtro por agregado
+
+SELECT st.first_name, st.last_name, AVG(g.grade_value) AS average_grade, COUNT(*) AS total_grades
+FROM v_students st
+JOIN grades g ON st.student_id = g.student_id
+GROUP BY st.student_id, st.first_name, st.last_name
+HAVING average_grade >7;
+
+#52 Conteo con umbral
+SELECT s.subject_name, s.acronym, COUNT(*) AS total_groups
+FROM  subjects s
+JOIN  groups g ON s.subject_id = g.subject_id
+GROUP BY s.subject_id, s.subject_name
+HAVING total_groups >3;
+
+#53 Filtro de tamaño de grupo
+SELECT g.group_name, g.activity, COUNT(*) AS total_students
+FROM groups g
+JOIN group_enrollments ge ON g.group_id = ge.group_id 
+GROUP BY g.group_id, g.group_name, g.activity
+HAVING total_students >15;
+
+#54 Promedio con filtro
+SELECT s.subject_name, AVG(g.grade_value) AS average_grade,COUNT(*) AS total_grades
+FROM subjects s
+JOIN groups gr ON s.subject_id = gr.subject_id
+JOIN grades g ON gr.group_id = g.group_id
+GROUP BY s.subject_id, s.subject_name
+HAVING AVG(g.grade_value) > 5.5;
