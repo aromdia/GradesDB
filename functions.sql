@@ -79,8 +79,30 @@ BEGIN
 END//
 DELIMITER ;
 
-SELECT f_subject_group_limit_reached(1, 'Teoría', 2025) AS 'LIMITE SUPERADO';
+SELECT f_subject_group_limit_reached(1, 'Teoría', 2024) AS 'LIMITE SUPERADO';
 
 SELECT s.subject_id, s.subject_name, s.acronym
 FROM subjects s
-WHERE f_subject_group_limit_reached(s.subject_id, 'Teoría', 2025) = TRUE;
+WHERE f_subject_group_limit_reached(s.subject_id, 'Teoría', 2024) = TRUE;
+
+#Funcion auxiliar
+DELIMITER //
+CREATE OR REPLACE FUNCTION f_student_group_limit(
+	p_student_id INT,
+	p_activity VARCHAR(15),
+	p_subject_id INT
+)
+RETURNS BOOLEAN
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+	DECLARE v_count INT;
+	
+	SELECT COUNT(*) INTO v_count
+	FROM group_enrollments ge
+	JOIN groups g ON g.group_id=ge.group_id
+	WHERE ge.student_id=p_student_id AND g.activity=p_activity AND g.subject_id=p_subject_id;
+	
+	RETURN v_count>=1;
+END //
+DELIMITER ;
