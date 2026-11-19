@@ -1,3 +1,5 @@
+USE grados;
+
 SET FOREIGN_KEY_CHECKS = 0;
 DELETE FROM people;
 DELETE FROM professors;
