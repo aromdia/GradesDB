@@ -75,7 +75,7 @@ BEGIN
 		SET v_result=(v_count >=2);
 	END IF;
 	
-	RETURN v_result;
+	RETURN v_result
 END//
 DELIMITER ;
 
@@ -106,3 +106,4 @@ BEGIN
 	RETURN v_count>=1;
 END //
 DELIMITER ;
+
